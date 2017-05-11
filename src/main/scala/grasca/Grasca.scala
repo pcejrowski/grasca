@@ -1,5 +1,0 @@
-package grasca
-
-class Grasca {
-
-}
