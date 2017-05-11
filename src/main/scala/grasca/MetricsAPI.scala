@@ -1,66 +1,77 @@
 package grasca
 
-import java.time.{Duration, Instant}
+import java.time.Instant
+
+import grasca.model.expand.{ExpandResult, Expansion}
+import grasca.model.find.{FindResult, Metric, Metrics}
+import grasca.model.index.Index
+import org.json4s._
+import org.json4s.native.JsonMethods._
 
 import scalaj.http._
 
-//todo:
-// create consts for format, wildcards
 /**
   * These API endpoints are useful for finding and listing metrics available in the system.
   *
   * @param host - Graphite server address
   * @param port - Graphite server port
   */
-class MetricsAPI(val host: String, val port: Int) {
+class MetricsAPI(val host: String, val port: Int = 80) {
 
   private lazy val metricsEndpoint: String = s"http://$host:$port/metrics"
 
-  private val WEEK: Duration = Duration.ofDays(7)
+  implicit val formats = DefaultFormats
 
   /**
     * Finds metrics under a given path.
     *
     * @param query     - The query to search for.
-    * @param format    - The output format to use. Can be "completer" or "treejson" (default).
-    * @param wildcards - Whether to add a wildcard result at the end or no(default).
-    * @param from      - Timestamp from which to consider metrics.
-    * @param until     - Timestamp until which to consider metrics.
+    * @param format    - The output format to use. Can be "completer" or "treejson". Default: "treejson"
+    * @param wildcards - Whether to add a wildcard result at the end or no. Default: false
+    * @param from      - Timestamp from which to consider metrics. Default: week ago
+    * @param until     - Timestamp until which to consider metrics. Default: now
     */
-  def find(query: String, format: String = "treejson", wildcards: Boolean = false, from: Instant = Instant.now.minus(WEEK), until: Instant = Instant.now): String = {
+  def find(query: String, format: String = "treejson", wildcards: Boolean = false, from: Instant = Instant.now.minus(WEEK), until: Instant = Instant.now): Option[Metrics] = {
     val response: HttpResponse[String] = Http(s"$metricsEndpoint/find")
       .param("query", query)
       .param("format", format)
-      .param("wildcards", if (wildcards) "1" else "0")
+      .param("wildcards", wildcards)
       .param("from", from.getEpochSecond.toString)
       .param("until", until.getEpochSecond.toString)
       .asString
-    response.body
+
+    parse(response.body)
+      .extractOpt[List[FindResult]]
+      .map(_.map(Metric(_)))
   }
 
   /**
     * Expands the given query with matching paths.
     *
     * @param query       - The metrics query. Can be specified multiple times.
-    * @param groupByExpr - Whether to return a flat list of results(default) or group them by query.
-    * @param leavesOnly  - Whether to only return leaves(default) or both branches and leaves.
+    * @param groupByExpr - Whether to return a flat list of results (false) or group them by query (true). Default: false
+    * @param leavesOnly  - Whether to only return leaves (false) or both branches and leaves (true). Default: false // fixme: dobule-check correctness
     */
-  def expand(query: String, groupByExpr: Boolean = false, leavesOnly: Boolean = false): String = {
+  def expand(query: String, groupByExpr: Boolean = false, leavesOnly: Boolean = false): Option[Expansion] = {
     val response: HttpResponse[String] = Http(s"$metricsEndpoint/expand")
       .param("query", query)
-      .param("groupByExpr", if (groupByExpr) "1" else "0")
-      .param("leavesOnly", if (leavesOnly) "1" else "0")
+      .param("groupByExpr", groupByExpr)
+      .param("leavesOnly", leavesOnly)
       .asString
-    response.body
+
+    parse(response.body)
+      .extractOpt[ExpandResult]
+      .map(_.results)
   }
 
   /**
     * Walks the metrics tree and returns every metric found as a sorted JSON array.
     */
-  def index: String = {
+  def index: Option[Index] = {
     val response: HttpResponse[String] = Http(s"$metricsEndpoint/index.json")
       .asString
-    response.body
+    parse(response.body)
+      .extractOpt[Index]
   }
 
 }

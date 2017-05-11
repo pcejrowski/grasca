@@ -5,8 +5,11 @@ version := "0.1.0-SNAPSHOT"
 scalaVersion := "2.12.1"
 crossScalaVersions := Seq("2.10.6", "2.11.8", "2.12.1")
 
+scalacOptions ++= Seq("-feature", "-language:implicitConversions", "-language:postfixOps")
+
 libraryDependencies += "org.scalatest" %% "scalatest" % "3.0.1" % "test"
 libraryDependencies += "org.scalaj" %% "scalaj-http" % "2.3.0"
+libraryDependencies += "org.json4s" %% "json4s-native" % "3.5.2"
 
 publishMavenStyle := true
 
