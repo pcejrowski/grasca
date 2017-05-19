@@ -1,5 +1,9 @@
 package grasca
 
+import java.time.Instant
+
+import scala.collection.immutable.ListMap
+
 
 object model {
 
@@ -32,9 +36,9 @@ object model {
   }
 
   object render {
-    type RenderedValues = Map[String, Int]
+    type RenderedValues = ListMap[String, ListMap[Instant, Long]]
 
-    private[grasca] case class RenderResult(target: String, datapoints: List[List[Int]])
+    private[grasca] case class RenderResult(target: String, datapoints: List[List[Long]])
 
   }
 
