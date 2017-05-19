@@ -14,12 +14,11 @@ class MetricsAPITest extends FlatSpec with Matchers {
 
   it should "expand given infix" in {
     val metricsAPI = new MetricsAPI(host)
-    println(metricsAPI.expand("spark*"))
+    println(metricsAPI.expand("spark"))
   }
 
   it should "return every metric found" in {
     val metricsAPI = new MetricsAPI(host)
     println(metricsAPI.index)
   }
-
 }

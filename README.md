@@ -1,11 +1,13 @@
 # grasca 
-######*/ɡraˈʒka/*
+###### */ɡraˈʒka/*
 
-**Gra**phite from **Sca**la (yet only metrics reader) 
+**Gra**phite client in **Sca**la (yet only metrics reader) 
 
 ### Motivation
 Lack of easy to use Scala library, that allows to read metrics from Graphite server.
  
+### API
+Library accesses Graphite API described here: [http://graphite-api.readthedocs.io/en/latest/api.html]
 ### Testing
 
 * Using prebuild Docker Image for Graphite & Statsd [https://github.com/hopsoft/docker-graphite-statsd]

@@ -31,4 +31,11 @@ object model {
     type Index = List[String]
   }
 
+  object render {
+    type RenderedValues = Map[String, Int]
+
+    private[grasca] case class RenderResult(target: String, datapoints: List[List[Int]])
+
+  }
+
 }

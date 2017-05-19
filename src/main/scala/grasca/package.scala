@@ -3,6 +3,7 @@ import java.time.Duration
 package object grasca {
 
   private[grasca] val WEEK: Duration = Duration.ofDays(7)
+  private[grasca] val DAY: Duration = Duration.ofDays(1)
 
   private[grasca] implicit def int2bool(x: Int): Boolean = {
     if (x != 0 && x != 1) throw new AssertionError(s"API returned value $x in dichotomous field")

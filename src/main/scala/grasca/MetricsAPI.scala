@@ -13,6 +13,7 @@ import scalaj.http._
 /**
   * These API endpoints are useful for finding and listing metrics available in the system.
   *
+  * @author pcejrowski
   * @param host - Graphite server address
   * @param port - Graphite server port
   */
@@ -26,7 +27,7 @@ class MetricsAPI(val host: String, val port: Int = 80) {
     * Finds metrics under a given path.
     *
     * @param query     - The query to search for.
-    * @param format    - The output format to use. Can be "completer" or "treejson". Default: "treejson"
+    * @param format    - The output format to use. Can be "completer" or "treejson". Default: "treejson" [TODO: completer not yet supported; create types]
     * @param wildcards - Whether to add a wildcard result at the end or no. Default: false
     * @param from      - Timestamp from which to consider metrics. Default: week ago
     * @param until     - Timestamp until which to consider metrics. Default: now
