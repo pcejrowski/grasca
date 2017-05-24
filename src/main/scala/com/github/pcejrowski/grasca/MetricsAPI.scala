@@ -1,10 +1,10 @@
-package grasca
+package com.github.pcejrowski.grasca
 
 import java.time.Instant
 
-import grasca.model.expand.{ExpandResult, Expansion}
-import grasca.model.find.{FindResult, Metric, Metrics}
-import grasca.model.index.Index
+import com.github.pcejrowski.grasca.model.expand.{ExpandResult, Expansion}
+import com.github.pcejrowski.grasca.model.find.{FindResult, Metric, Metrics}
+import com.github.pcejrowski.grasca.model.index.Index
 import org.json4s._
 import org.json4s.native.JsonMethods._
 

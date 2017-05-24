@@ -1,6 +1,6 @@
+import ReleaseTransformations._
 organization := "com.github.pcejrowski"
 name := "grasca"
-version := "0.1.0-SNAPSHOT"
 
 scalaVersion := "2.12.1"
 crossScalaVersions := Seq("2.10.6", "2.11.8", "2.12.1")
@@ -12,32 +12,44 @@ libraryDependencies += "org.scalaj" %% "scalaj-http" % "2.3.0"
 libraryDependencies += "org.json4s" %% "json4s-native" % "3.5.2"
 libraryDependencies += "com.github.nikita-volkov" % "sext" % "0.2.4"
 
+useGpg := true
 publishMavenStyle := true
-
-publishTo <<= version { (v: String) =>
+publishArtifact in Test := false
+publishTo := {
   val nexus = "https://oss.sonatype.org/"
-  if (v.trim.endsWith("SNAPSHOT"))
+  if (isSnapshot.value)
     Some("snapshots" at nexus + "content/repositories/snapshots")
   else
-    Some("releases" at nexus + "service/local/staging/deploy/maven2")
+    Some("releases"  at nexus + "service/local/staging/deploy/maven2")
 }
+homepage := Some(url("https://github.com/pcejrowski/grasca"))
+scmInfo := Some(
+  ScmInfo(
+    url("https://github.com/pcejrowski/grasca"),
+    "scm:git:git@github.com:pcejrowski/grasca.git"
+  )
+)
+developers := List(
+  Developer(
+    id = "pcejrowski",
+    name = "Paweł Cejrowski",
+    email = "pcejrowski@gmail.com",
+    url = url("http://github.com/pcejrowski")
+  )
+)
+licenses := Seq("MIT license" -> url("http://www.opensource.org/licenses/mit-license.php"))
 
-pomExtra :=
-  <url>https://github.com/pcejrowski/grasca</url>
-    <licenses>
-      <license>
-        <name>MIT license</name>
-        <url>http://www.opensource.org/licenses/mit-license.php</url>
-      </license>
-    </licenses>
-    <scm>
-      <url>git@github.com:pcejrowski/grasca.git</url>
-      <connection>scm:git:git@github.com:pcejrowski/grasca.git</connection>
-    </scm>
-    <developers>
-      <developer>
-        <id>pcejrowski</id>
-        <name>Paweł Cejrowski</name>
-        <url>github.com/pcejrowski</url>
-      </developer>
-    </developers>
+releaseProcess := Seq[ReleaseStep](
+  checkSnapshotDependencies,
+  inquireVersions,
+  runClean,
+  runTest,
+  setReleaseVersion,
+  commitReleaseVersion,
+  tagRelease,
+  ReleaseStep(action = Command.process("publishSigned", _), enableCrossBuild = true),
+  setNextVersion,
+  commitNextVersion,
+  ReleaseStep(action = Command.process("sonatypeReleaseAll", _), enableCrossBuild = true),
+  pushChanges
+)

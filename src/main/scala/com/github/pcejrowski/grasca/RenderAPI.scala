@@ -1,8 +1,8 @@
-package grasca
+package com.github.pcejrowski.grasca
 
-import java.time.{Duration, Instant}
+import java.time.Instant
 
-import grasca.model.render.{RenderResult, RenderedValues}
+import com.github.pcejrowski.grasca.model.render.{RenderResult, RenderedValues}
 import org.json4s._
 import org.json4s.native.JsonMethods._
 

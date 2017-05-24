@@ -1,3 +1,5 @@
+package com.github.pcejrowski
+
 import java.time.Duration
 
 package object grasca {

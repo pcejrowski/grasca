@@ -1,4 +1,4 @@
-package grasca
+package com.github.pcejrowski.grasca
 
 import org.scalatest.{FlatSpec, Matchers}
 

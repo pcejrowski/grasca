@@ -1,16 +1,15 @@
 # grasca 
-###### */ɡraˈʒka/*
 
-**Gra**phite client in **Sca**la (yet only metrics reader) 
+/ɡraˈʒka/ - **Gra**phite client in **Sca**la (yet only metrics reader) 
 
 ### Motivation
 Lack of easy to use Scala library, that allows to read metrics from Graphite server.
  
 ### API
 Library accesses Graphite API described here: [http://graphite-api.readthedocs.io/en/latest/api.html]
-### Testing
 
-* Using prebuild Docker Image for Graphite & Statsd [https://github.com/hopsoft/docker-graphite-statsd]
+### Testing
+Using prebuild Docker Image for Graphite & Statsd [https://github.com/hopsoft/docker-graphite-statsd]
 ```
 docker run -d\
  --name graphite\
@@ -24,7 +23,7 @@ docker run -d\
 ```
 
 ### to-do:
-* integrate JSON rendered data to be returned 
+* cover with tests
 * integrate library, which allows to write to graphite
 * create some visualization software
 * create simple anomaly detection
