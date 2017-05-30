@@ -7,10 +7,10 @@ crossScalaVersions := Seq("2.10.6", "2.11.8", "2.12.1")
 
 scalacOptions ++= Seq("-feature", "-language:implicitConversions", "-language:postfixOps")
 
-libraryDependencies += "org.scalatest" %% "scalatest" % "3.0.1" % "test"
 libraryDependencies += "org.scalaj" %% "scalaj-http" % "2.3.0"
 libraryDependencies += "org.json4s" %% "json4s-native" % "3.5.2"
-libraryDependencies += "com.github.nikita-volkov" % "sext" % "0.2.4"
+libraryDependencies += "org.scalatest" %% "scalatest" % "3.0.1" % "test"
+libraryDependencies += "com.github.tomakehurst" % "wiremock" % "2.6.0" % "test"
 
 useGpg := true
 publishMavenStyle := true

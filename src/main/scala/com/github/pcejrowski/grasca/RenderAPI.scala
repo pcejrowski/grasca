@@ -18,7 +18,7 @@ import scalaj.http._
   */
 class RenderAPI(val host: String, val port: Int = 80) {
 
-  private lazy val metricsEndpoint: String = s"http://$host:$port/render"
+  private lazy val renderEndpoint: String = s"http://$host:$port/render"
 
   implicit val formats = DefaultFormats
 
@@ -31,7 +31,7 @@ class RenderAPI(val host: String, val port: Int = 80) {
     * @return
     */
   def values(target: String, from: Instant = Instant.now.minus(DAY), until: Instant = Instant.now): Option[RenderedValues] = {
-    val response: HttpResponse[String] = Http(s"$metricsEndpoint/find")
+    val response: HttpResponse[String] = Http(s"$renderEndpoint")
       .param("target", target)
       .param("from", from.getEpochSecond.toString)
       .param("until", until.getEpochSecond.toString)
@@ -49,7 +49,6 @@ class RenderAPI(val host: String, val port: Int = 80) {
             case List(value, epochTime) =>
               Instant.ofEpochSecond(epochTime) -> value
           }
-
           .sortBy(_._1)
           .reverse
           : _*)
