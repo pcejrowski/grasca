@@ -1,5 +1,7 @@
 # grasca 
 
+[![Join the chat at https://gitter.im/grasca/Lobby](https://badges.gitter.im/grasca/Lobby.svg)](https://gitter.im/grasca/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 /ɡraˈʒka/ - Graphite client for Scala (yet only metrics reader) 
 
 ### Motivation
