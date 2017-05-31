@@ -26,7 +26,7 @@ MetricsAPI("localhost").expand("dummy-query")
 MetricsAPI("localhost").index
 RenderAPI("localhost").render("dummy-target")
 ```
-See [tests](./src/test/scala/com/github/pcejrowski/grasca).
+See [tests](./src/test/scala/com/github/pcejrowski/grasca) or [scaladoc](http://pcejrowski.github.io/grasca/latest/api).
 
 ### API
 Library accesses Graphite API described here: [http://graphite-api.readthedocs.io/en/latest/api.html]

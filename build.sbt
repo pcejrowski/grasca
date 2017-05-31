@@ -1,4 +1,5 @@
-import ReleaseTransformations._
+import sbtrelease.ReleasePlugin.autoImport.ReleaseTransformations._
+
 organization := "com.github.pcejrowski"
 name := "grasca"
 
@@ -21,7 +22,7 @@ publishTo := {
   if (isSnapshot.value)
     Some("snapshots" at nexus + "content/repositories/snapshots")
   else
-    Some("releases"  at nexus + "service/local/staging/deploy/maven2")
+    Some("releases" at nexus + "service/local/staging/deploy/maven2")
 }
 homepage := Some(url("https://github.com/pcejrowski/grasca"))
 scmInfo := Some(
@@ -39,6 +40,11 @@ developers := List(
   )
 )
 licenses := Seq("MIT license" -> url("http://www.opensource.org/licenses/mit-license.php"))
+
+enablePlugins(GhpagesPlugin)
+enablePlugins(SiteScaladocPlugin)
+git.remoteRepo := "git@github.com:pcejrowski/grasca.git"
+mappings in makeSite ++= Seq(file("LICENSE") -> "LICENSE")
 
 releaseProcess := Seq[ReleaseStep](
   checkSnapshotDependencies,
