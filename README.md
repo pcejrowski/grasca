@@ -11,7 +11,7 @@ Lack of easy to use Scala library, that allows to read metrics from Graphite ser
 libraryDependencies += "com.github.pcejrowski" %% "grasca" % "0.1.4"
 ```
 
-See [tests](./src/test/scala/com/github/pcejrowski/grasca) or [scaladoc](http://pcejrowski.github.io/grasca/latest/api) for more details.
+See [tests](./src/test/scala/com/github/pcejrowski/grasca) or [scaladoc](https://pcejrowski.github.io/grasca/latest/api/com/github/pcejrowski/grasca/) for more details.
 
 Library accesses Graphite API described [here](http://graphite-api.readthedocs.io/en/latest/api.html).
 
