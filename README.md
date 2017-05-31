@@ -8,7 +8,7 @@ Lack of easy to use Scala library, that allows to read metrics from Graphite ser
 ### Usage
 
 ```
-libraryDependencies += "com.github.pcejrowski" %% "grasca" % "0.1.4"
+libraryDependencies += "com.github.pcejrowski" %% "grasca" % "0.1.5"
 ```
 
 See [tests](./src/test/scala/com/github/pcejrowski/grasca) or [scaladoc](https://pcejrowski.github.io/grasca/latest/api/com/github/pcejrowski/grasca/) for more details.

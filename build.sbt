@@ -44,7 +44,7 @@ licenses := Seq("MIT license" -> url("http://www.opensource.org/licenses/mit-lic
 enablePlugins(GhpagesPlugin)
 enablePlugins(SiteScaladocPlugin)
 git.remoteRepo := "git@github.com:pcejrowski/grasca.git"
-mappings in makeSite ++= Seq(file("LICENSE") -> "LICENSE")
+mappings in makeSite ++= Seq(file("LICENSE") -> "LICENSE", file("src/assets/favicon.ico") -> "favicon.ico")
 
 releaseProcess := Seq[ReleaseStep](
   checkSnapshotDependencies,
