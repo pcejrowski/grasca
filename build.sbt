@@ -12,6 +12,7 @@ libraryDependencies += "org.json4s" %% "json4s-native" % "3.5.2"
 libraryDependencies += "org.scalatest" %% "scalatest" % "3.0.1" % "test"
 libraryDependencies += "com.github.tomakehurst" % "wiremock" % "2.6.0" % "test"
 
+parallelExecution in Test := false
 useGpg := true
 publishMavenStyle := true
 publishArtifact in Test := false

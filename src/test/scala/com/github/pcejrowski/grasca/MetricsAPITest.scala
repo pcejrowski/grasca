@@ -9,9 +9,6 @@ import org.scalatest.{FlatSpec, Matchers}
 
 class MetricsAPITest extends FlatSpec with Matchers with WiremockServer {
 
-  override val host: String = "localhost"
-  override val port: Int = 8081
-
   val testee = new MetricsAPI(host, port)
 
   behavior of "A MetricsAPI"
