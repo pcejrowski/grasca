@@ -15,8 +15,11 @@ See [tests](./src/test/scala/com/github/pcejrowski/grasca) or [scaladoc](https:/
 
 Library accesses Graphite API described [here](http://graphite-api.readthedocs.io/en/latest/api.html).
 
+
 ### to-do:
 * integrate library, which allows to write to graphite
 * create some visualization software
 * create simple anomaly detection
 * create cross-metric comparator
+
+[License](https://pcejrowski.github.io/grasca/LICENSE)
