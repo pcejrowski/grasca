@@ -17,11 +17,11 @@ import scalaj.http._
   * @param host - Graphite server address
   * @param port - Graphite server port
   */
-class MetricsAPI(val host: String, val port: Int = 80) {
+class MetricsAPI(private val host: String, private val port: Int = 80) {
 
   private lazy val metricsEndpoint: String = s"http://$host:$port/metrics"
 
-  implicit val formats = DefaultFormats
+  private implicit val formats = DefaultFormats
 
   /**
     * Finds metrics under a given path.
@@ -75,4 +75,8 @@ class MetricsAPI(val host: String, val port: Int = 80) {
       .extractOpt[Index]
   }
 
+}
+
+object MetricsAPI {
+  def apply(host: String, port: Int = 80) = new MetricsAPI(host, port)
 }

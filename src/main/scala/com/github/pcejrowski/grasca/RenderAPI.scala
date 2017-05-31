@@ -16,11 +16,11 @@ import scalaj.http._
   * @param host - Graphite server address
   * @param port - Graphite server port
   */
-class RenderAPI(val host: String, val port: Int = 80) {
+class RenderAPI(private val host: String, private val port: Int = 80) {
 
   private lazy val renderEndpoint: String = s"http://$host:$port/render"
 
-  implicit val formats = DefaultFormats
+  private implicit val formats = DefaultFormats
 
   /**
     * Renders values from the target.
@@ -56,4 +56,8 @@ class RenderAPI(val host: String, val port: Int = 80) {
       }).sortBy(_._1)
       ).map(ListMap(_: _*))
   }
+}
+
+object RenderAPI {
+  def apply(host: String, port: Int = 80) = new RenderAPI(host, port)
 }

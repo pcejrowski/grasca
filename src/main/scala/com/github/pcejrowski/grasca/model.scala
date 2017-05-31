@@ -5,7 +5,7 @@ import java.time.Instant
 import scala.collection.immutable.ListMap
 
 
-object model {
+private object model {
 
   object find {
     type Metrics = List[Metric]

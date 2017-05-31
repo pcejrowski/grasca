@@ -11,7 +11,7 @@ import scala.collection.immutable.ListMap
 
 class RenderAPITest extends FlatSpec with Matchers with WiremockServer {
 
-  val testee: RenderAPI = new RenderAPI(host, port)
+  val testee: RenderAPI = RenderAPI(host, port)
   behavior of "A RenderAPI"
 
   it should "parse rendered server response correctly" in {
