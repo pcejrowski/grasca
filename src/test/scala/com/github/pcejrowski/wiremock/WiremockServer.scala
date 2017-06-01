@@ -9,9 +9,9 @@ trait WiremockServer extends BeforeAndAfterEach {
 
   this: Suite =>
 
-  val host: String = "localhost"
+  def host: String = "localhost"
 
-  val port: Int = 8080
+  def port: Int = 8080
 
   val wireMockServer: WireMockServer = new WireMockServer(wireMockConfig().port(port))
 

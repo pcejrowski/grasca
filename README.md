@@ -19,9 +19,9 @@ Library accesses Graphite API described [here](http://graphite-api.readthedocs.i
 
 
 ### to-do:
-* integrate library, which allows to write to graphite
-* create some visualization software
-* create simple anomaly detection
-* create cross-metric comparator
+    * integrate library, which allows to write to graphite
+    * create some visualization software
+    * create simple anomaly detection
+    * create cross-metric comparator
 
 [License](https://pcejrowski.github.io/grasca/LICENSE)
