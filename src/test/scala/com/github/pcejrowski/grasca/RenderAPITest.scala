@@ -52,15 +52,15 @@ class RenderAPITest extends FlatSpec with Matchers with WiremockServer {
       .willReturn(aResponse().withBody(indexResponse).withStatus(200)))
 
     val actual: Option[RenderedValues] = testee.values("dummy")
-    val expected: Option[ListMap[String, ListMap[Instant, Long]]] =
+    val expected: Option[ListMap[String, ListMap[Instant, Option[Long]]]] =
       Some(ListMap(
         "1" -> ListMap(
-          Instant.ofEpochSecond(1496158930) -> 0,
-          Instant.ofEpochSecond(1496158920) -> 1,
-          Instant.ofEpochSecond(1496158910) -> 2),
+          Instant.ofEpochSecond(1496158930) -> None,
+          Instant.ofEpochSecond(1496158920) -> Some(1),
+          Instant.ofEpochSecond(1496158910) -> Some(2)),
         "2" -> ListMap(
-          Instant.ofEpochSecond(1496158910) -> 4)
-      ))
+          Instant.ofEpochSecond(1496158910) -> Some(4)
+      )))
     actual should be(expected)
   }
 }

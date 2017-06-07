@@ -36,9 +36,9 @@ object model {
   }
 
   object render {
-    type RenderedValues = ListMap[String, ListMap[Instant, Long]]
+    type RenderedValues = ListMap[String, ListMap[Instant, Option[Long]]]
 
-    private[grasca] case class RenderResult(target: String, datapoints: List[List[Long]])
+    private[grasca] case class RenderResult(target: String, datapoints: List[List[Option[Long]]])
 
   }
 
