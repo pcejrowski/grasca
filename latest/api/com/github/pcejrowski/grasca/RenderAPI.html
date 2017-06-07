@@ -257,7 +257,7 @@
         <span class="name">RenderAPI</span><span class="params">(<span name="host">host: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="port">port: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">80</span></span>)</span>
       </span>
       
-      <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt class="param">host</dt><dd class="cmt"><p>- Graphite server address</p></dd><dt class="param">port</dt><dd class="cmt"><p>- Graphite server port</p></dd></dl></div>
+      <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt class="param">host</dt><dd class="cmt"><p>- Graphite server address.</p></dd><dt class="param">port</dt><dd class="cmt"><p>- Graphite server port. Default: 80</p></dd></dl></div>
     </li></ol>
             </div>
 
@@ -548,7 +548,7 @@
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">values</span><span class="params">(<span name="target">target: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="from">from: <span class="extype" name="java.time.Instant">Instant</span> = <span class="symbol">Instant.now.minus(DAY)</span></span>, <span name="until">until: <span class="extype" name="java.time.Instant">Instant</span> = <span class="symbol">Instant.now</span></span>)</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<a href="model$$render$.html#RenderedValues=scala.collection.immutable.ListMap[String,scala.collection.immutable.ListMap[java.time.Instant,Long]]" class="extmbr" name="com.github.pcejrowski.grasca.model.render.RenderedValues">RenderedValues</a>]</span>
+        <span class="name">values</span><span class="params">(<span name="target">target: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="from">from: <span class="extype" name="java.time.Instant">Instant</span> = <span class="symbol">Instant.now.minus(DAY)</span></span>, <span name="until">until: <span class="extype" name="java.time.Instant">Instant</span> = <span class="symbol">Instant.now</span></span>)</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<a href="model$$render$.html#RenderedValues=scala.collection.immutable.ListMap[String,scala.collection.immutable.ListMap[java.time.Instant,Option[Long]]]" class="extmbr" name="com.github.pcejrowski.grasca.model.render.RenderedValues">RenderedValues</a>]</span>
       </span>
       
       <p class="shortcomment cmt">Renders values from the target.</p><div class="fullcomment"><div class="comment cmt"><p>Renders values from the target.
