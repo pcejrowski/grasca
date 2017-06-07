@@ -14,8 +14,8 @@ import scalaj.http._
   * These API endpoints are useful for finding and listing metrics available in the system.
   *
   * @author pcejrowski
-  * @param host - Graphite server address
-  * @param port - Graphite server port
+  * @param host - Graphite server address.
+  * @param port - Graphite server port. Default: 80
   */
 class MetricsAPI(private val host: String, private val port: Int = 80) {
 
