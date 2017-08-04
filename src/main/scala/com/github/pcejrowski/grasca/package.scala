@@ -2,6 +2,8 @@ package com.github.pcejrowski
 
 import java.time.Duration
 
+import scala.collection.immutable.ListMap
+
 package object grasca {
 
   private[grasca] val WEEK: Duration = Duration.ofDays(7)
@@ -15,4 +17,9 @@ package object grasca {
   private[grasca] implicit def bool2intString(x: Boolean): String = {
     if (x) "1" else "0"
   }
+
+  private[grasca] implicit class ToListMap[A, B](seq: Seq[(A, B)]) {
+    def toListMap: ListMap[A, B] = ListMap(seq: _*)
+  }
+
 }

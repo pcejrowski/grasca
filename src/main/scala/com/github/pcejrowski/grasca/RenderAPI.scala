@@ -41,20 +41,22 @@ class RenderAPI(private val host: String, private val port: Int = 80) {
 
     parse(response.body)
       .extractOpt[List[RenderResult]]
-      .map(_.map(entry => {
-        val legend = entry.target
-        val values: ListMap[Instant, Option[Long]] = ListMap(entry
+      .map(transform)
+  }
+
+  private def transform(renderResults: List[RenderResult]): RenderedValues = {
+    renderResults
+      .map(entry => {
+        val values: ListMap[Instant, Option[Long]] = entry
           .datapoints
-          .map {
-            case List(value, Some(epochTime)) =>
-              Instant.ofEpochSecond(epochTime) -> value
-          }
+          .map { case List(value, Some(epochTime)) => Instant.ofEpochSecond(epochTime) -> value }
           .sortBy(_._1)
           .reverse
-          : _*)
-        legend -> values
-      }).sortBy(_._1)
-      ).map(ListMap(_: _*))
+          .toListMap
+        entry.target -> values
+      })
+      .sortBy(_._1)
+      .toListMap
   }
 }
 
