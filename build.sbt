@@ -3,8 +3,8 @@ import sbtrelease.ReleasePlugin.autoImport.ReleaseTransformations._
 organization := "com.github.pcejrowski"
 name := "grasca"
 
-scalaVersion := "2.12.1"
-crossScalaVersions := Seq("2.10.6", "2.11.8", "2.12.1")
+scalaVersion := "2.12.3"
+crossScalaVersions := Seq("2.10.6", "2.11.8", "2.12.3")
 
 scalacOptions ++= Seq("-feature", "-language:implicitConversions", "-language:postfixOps")
 
